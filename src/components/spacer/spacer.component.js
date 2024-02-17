@@ -17,13 +17,17 @@ const positionVariant = {
 
 
 const getVariant = (theme, position, size) => {
-    console.log(`${positionVariant[position]} : ${theme.space[sizeVariant[size]]}`)
+
+    
+
+    console.log(positionVariant[position])
+    console.log(sizeVariant[size])
     return `${positionVariant[position]} : ${theme.space[sizeVariant[size]]}`
 }
     
 
 export const Spacer = styled.View`
-    ${({ position, size, theme}) => getVariant(position, size, theme)}; 
+    ${({ theme, position, size }) => getVariant(theme, position, size)}; 
 `
 
 Spacer.defaultProps = {

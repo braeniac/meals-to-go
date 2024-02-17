@@ -48,11 +48,9 @@ const Rating = styled.View`
 const Label = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.caption};
   color: ${({ theme }) => theme.colors.text.error}; 
-  margin-right: ${({ theme }) => theme.space[2]};
 `;
 
 const Icon = styled.Image`
-  margin-left: ${({ theme }) => theme.space[2]};
 `
 
 export const RestaurantsInfoCard = ({ restaurant = {} }) => {
