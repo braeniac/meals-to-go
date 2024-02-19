@@ -15,13 +15,7 @@ const positionVariant = {
     right: 'marginRight'
 }
 
-
 const getVariant = (theme, position, size) => {
-
-    
-
-    console.log(positionVariant[position])
-    console.log(sizeVariant[size])
     return `${positionVariant[position]} : ${theme.space[sizeVariant[size]]}`
 }
     

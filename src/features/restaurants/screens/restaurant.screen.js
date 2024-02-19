@@ -20,7 +20,7 @@ const ListContainer = styled.View`
 
 const Search = styled(Searchbar)`
     background-color: ${({ theme }) => theme.colors.ui.quaternary};
-    border-width: 1px; 
+    border-width: ${StyleSheet.hairlineWidth}px; 
 `;
 
 export const RestaurantsScreen = () => {
