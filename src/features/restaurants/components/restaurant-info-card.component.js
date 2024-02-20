@@ -1,50 +1,21 @@
 import react from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { Card } from 'react-native-paper';
-import styled from 'styled-components'; 
+import { Image } from 'react-native';
 import { SvgXml } from 'react-native-svg'; 
+
 
 import star from '../../../../assets/star';
 import open from '../../../../assets/open'; 
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { Text } from '../../../components/typography/text.component';
 
-const RestaurantCard = styled(Card)`
-  background-color: ${({ theme }) => theme.colors.ui.quaternary}; 
-  border-width: ${StyleSheet.hairlineWidth}px;
-`
-const RestaurantCardCover = styled(Card.Cover)`
-  background-color: white;
-  padding: ${({ theme }) => theme.space[2]};
-`
-
-const Info = styled.View`
-  padding: ${({ theme }) => theme.space[3]};
-`
-
-const Address = styled.Text`
-  font-size: ${({ theme }) => theme.fontSizes.caption};
-`
-
-const Section = styled.View`
-  flex-direction: row; 
-  align-items: center;
-`;
-
-const SectionEnd = styled.View`
-  flex: 1; 
-  flex-direction: row; 
-  justify-content: flex-end; 
-`;
-
-const Rating = styled.View`
-  flex-direction: row; 
-`;
-
-const Label = styled.Text`
-  font-size: ${({ theme }) => theme.fontSizes.caption};
-  color: ${({ theme }) => theme.colors.text.error}; 
-`;
+import {  
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  SectionEnd,
+  Rating,
+} from './restaurant-info-card.style'; 
 
 
 export const RestaurantsInfoCard = ({ restaurant = {} }) => {
@@ -60,8 +31,8 @@ export const RestaurantsInfoCard = ({ restaurant = {} }) => {
         isClosedTemporarily=true,
     } = restaurant;
 
-    const RatingArray = Array.from(new Array(Math.floor(rating)));
-    
+    const RatingArray = Array.from({ length: Math.floor(rating) }, (_, index) => index + 1);
+
     return (
       <RestaurantCard elevation={0}>
         <RestaurantCardCover source={{ uri: photos[0] }} />
@@ -70,8 +41,8 @@ export const RestaurantsInfoCard = ({ restaurant = {} }) => {
           <Section>          
             <Rating>
               {
-                RatingArray.map((index) => (
-                  <SvgXml key={index} width={20} height={20} xml={star} />
+                RatingArray.map((value) => (
+                  <SvgXml key={value} width={20} height={20} xml={star} />
                 ))
               }
             </Rating>
