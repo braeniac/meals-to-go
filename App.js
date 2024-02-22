@@ -60,10 +60,7 @@ export default function App() {
                 }, 
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'gray',
-                headerShown: false,
-                tabBarStyle: {
-                  padding: 5
-                }
+                headerShown: false
               })}  
             >
               <Tab.Screen name="Restaurants" component={RestaurantsScreen} />

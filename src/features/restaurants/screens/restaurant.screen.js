@@ -2,8 +2,10 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { RestaurantsInfoCard } from '../components/restaurant-info-card.component';
 import styled from 'styled-components'; 
+import { useEffect } from 'react';
 
 import { SafeArea } from '../../../../src/components/utility/safe-area.component';
+import { restaurantsRequest } from '../../../services/restaurants/restaurants.service';
 
 const SearchContainer = styled.View`
     padding: ${({ theme }) => theme.space[3]};
@@ -21,6 +23,13 @@ const Search = styled(Searchbar)`
 `;
 
 export const RestaurantsScreen = () => {
+
+    useEffect(() => {
+        restaurantsRequest(); 
+    }, []) 
+
+    
+
     return(
         <SafeArea>
             <SearchContainer>
