@@ -1,11 +1,15 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import React, { useContext} from 'react'; 
+import { StyleSheet } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { RestaurantsInfoCard } from '../components/restaurant-info-card.component';
 import styled from 'styled-components'; 
-import { useEffect } from 'react';
 
+//components 
+import { RestaurantsInfoCard } from '../components/restaurant-info-card.component';
 import { SafeArea } from '../../../../src/components/utility/safe-area.component';
-import { restaurantsRequest } from '../../../services/restaurants/restaurants.service';
+
+//context 
+import { RestaurantsContext } from '../../../services/restaurants/restaurants.context';
+
 
 const SearchContainer = styled.View`
     padding: ${({ theme }) => theme.space[3]};
@@ -24,26 +28,25 @@ const Search = styled(Searchbar)`
 
 export const RestaurantsScreen = () => {
 
-    useEffect(() => {
-        restaurantsRequest(); 
-    }, []) 
-
-    
+    const { isLoading, error, restaurants } = useContext(RestaurantsContext); 
 
     return(
         <SafeArea>
+
             <SearchContainer>
                 <Search
                     placeholder="Search"
                     mode="bar"
                 />
             </SearchContainer>
-
-  
-
+            
             <RestaurantList
-                data={[{name: "1"}, {name: "2"}, {name: "3"}, {name: "4"}]}
-                renderItem={() => <RestaurantsInfoCard />}
+                data={restaurants}
+                renderItem={({ item }) => {
+                    return (
+                        <RestaurantsInfoCard restaurant={item}  />
+                    )
+                }}
                 keyExtractor={(item) => item.name}
             />
             
