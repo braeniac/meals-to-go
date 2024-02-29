@@ -64,7 +64,7 @@ export const RestaurantsInfoCard = ({ restaurant = { } }) => {
               </Spacer>
             </SectionEnd>
           </Section>
-          <Text variant="caption">{address}</Text>
+          <Text variant="caption">{restaurant.vicinity}</Text> 
         </Info>
       </RestaurantCard>
     )
