@@ -5,9 +5,9 @@ import { View, Text } from 'react-native';
 //icons
 import { Ionicons } from '@expo/vector-icons'; 
 
-//screens
-import { RestaurantsScreen } from '../../features/restaurants/screens/restaurant.screen';
 
+//navigators 
+import { RestaurantsNavigator } from './restaurants.navigator';
 
 function MapScreen() {
     return (
@@ -54,7 +54,7 @@ export const AppNavigation = () => {
                 headerShown: false
               })}  
             >
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
               <Tab.Screen name="Maps" component={MapScreen} />
               <Tab.Screen name="Settings" component={SettingsScreen} />
             </Tab.Navigator>

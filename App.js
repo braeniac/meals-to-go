@@ -16,10 +16,10 @@ import { LocationContextProvider } from './src/services/location/location.contex
 export default function App() {
   return (
     <>
+        <ExpoStatusBar style="auto" />
         <ThemeProvider theme={theme}>
           <LocationContextProvider>
             <RestaurantsContextProvider>
-              <ExpoStatusBar style="auto" />
               <Navigation />
             </RestaurantsContextProvider>
           </LocationContextProvider>

@@ -1,6 +1,7 @@
 import React, { useContext} from 'react'; 
 import styled from 'styled-components'; 
 import { ActivityIndicator } from 'react-native-paper';
+import { TouchableOpacity} from 'react-native';
 
 //components 
 import { RestaurantsInfoCard } from '../components/restaurant-info-card.component';
@@ -27,7 +28,7 @@ const Loading = styled(ActivityIndicator)`
     margin-left: -25px;
 `
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
 
     const { isLoading, error, restaurants } = useContext(RestaurantsContext); 
 
@@ -52,7 +53,17 @@ export const RestaurantsScreen = () => {
                 data={restaurants}
                 renderItem={({ item }) => {
                     return (
-                        <RestaurantsInfoCard restaurant={item}  />
+                        <TouchableOpacity 
+                            onPress={() => { 
+                                navigation.navigate('RestaurantDetail', {
+                                    restaurant: item
+                                })
+                            }}
+                        >
+                            <RestaurantsInfoCard 
+                                restaurant={item}  
+                            />
+                        </TouchableOpacity>
                     )
                 }}
                 keyExtractor={(item) => item.name}
