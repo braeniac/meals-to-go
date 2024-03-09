@@ -8,11 +8,14 @@ import { LocationContext } from '../../../services/location/location.context';
 
 const SearchContainer = styled.View`
     padding: ${({ theme }) => theme.space[3]};
+    position: absolute; 
+    z-index: 999;
+    top: 40px; 
+    width: 100%; 
 `;
 
 const SearchField = styled(Searchbar)`
     background-color: ${({ theme }) => theme.colors.ui.quaternary};
-    border-width: ${StyleSheet.hairlineWidth}px; 
 `;
 
 export const Search = () => {
@@ -21,17 +24,14 @@ export const Search = () => {
     const [searchKeyword, setSearchKeyword] = useState(keyword);
 
     useEffect(() => {
-        search(searchKeyword)
-    }, [])
-
-    useEffect(() => {
-        setSearchKeyword(keyword); 
+        setSearchKeyword(keyword);
     }, [keyword])
 
     return( 
         <SearchContainer>
             <SearchField
                 placeholder="Search for a location"
+                icon="map"
                 mode="bar"
                 value={searchKeyword}
                 onChangeText={(text) => {

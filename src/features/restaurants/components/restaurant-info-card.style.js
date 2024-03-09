@@ -4,10 +4,9 @@ import { Card } from 'react-native-paper';
 
 export const RestaurantCard = styled(Card)`
   background-color: ${({ theme }) => theme.colors.ui.quaternary}; 
-
+  shadowRadius: 3.84;
   shadowOpacity: 0.25;
   shadowColor: '#000';
-  shadowRadius: 3.84;
   elevation: 5;
   margin-bottom: ${({ theme }) => theme.space[3]};
 `

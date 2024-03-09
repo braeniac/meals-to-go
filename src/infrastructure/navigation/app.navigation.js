@@ -8,14 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 //navigators 
 import { RestaurantsNavigator } from './restaurants.navigator';
+import { MapScreen } from '../../features/map/screens/map.screen'; 
 
-function MapScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
-      </View>
-    );
-  }
   
 function SettingsScreen() {
     return (
@@ -54,9 +48,9 @@ export const AppNavigation = () => {
                 headerShown: false
               })}  
             >
-              <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-              <Tab.Screen name="Maps" component={MapScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
+              <Tab.Screen name="Restaurants"  component={RestaurantsNavigator} />
+              <Tab.Screen name="Maps"         component={MapScreen} />
+              <Tab.Screen name="Settings"     component={SettingsScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     )
