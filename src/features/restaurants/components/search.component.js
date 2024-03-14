@@ -15,7 +15,7 @@ const SearchField = styled(Searchbar)`
     border-width: ${StyleSheet.hairlineWidth}px; 
 `;
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
 
     const { keyword, search } = useContext(LocationContext);
     const [searchKeyword, setSearchKeyword] = useState(keyword);
@@ -33,6 +33,10 @@ export const Search = () => {
             <SearchField
                 placeholder="Search for a location"
                 mode="bar"
+                icon="heart"
+                onIconPress={() => {
+
+                }}
                 value={searchKeyword}
                 onChangeText={(text) => {
                     setSearchKeyword(text)

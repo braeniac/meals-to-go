@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'; 
+import React, { useContext, useState } from 'react'; 
 import styled from 'styled-components'; 
 import { ActivityIndicator } from 'react-native-paper';
 import { TouchableOpacity} from 'react-native';
@@ -31,11 +31,15 @@ const Loading = styled(ActivityIndicator)`
 export const RestaurantsScreen = ({ navigation }) => {
 
     const { isLoading, error, restaurants } = useContext(RestaurantsContext); 
+    const [isToggled, setIsToggled] = useState(false); 
 
     return(
         <SafeArea>
 
-            <Search />
+            <Search 
+                isFavouritesToggled={isToggled} 
+                onFavouritesToggled={() => setIsToggled(!isToggled)} 
+            />
 
             {
                 (isLoading) && (
