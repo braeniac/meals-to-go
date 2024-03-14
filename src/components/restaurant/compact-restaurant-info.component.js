@@ -36,7 +36,7 @@ export const CompactRestaurantInfo = ({ restaurant }) => {
         <Item>
             <Image source={{ uri : restaurant.photos[0] }} />
             <Label>
-                <Text variant="label">{restaurant.name}</Text>
+                <Text variant="caption">{ restaurant.name }</Text>
             </Label>
         </Item>
     )   

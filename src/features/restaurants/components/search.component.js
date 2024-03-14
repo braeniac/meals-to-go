@@ -33,10 +33,10 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
             <SearchField
                 placeholder="Search for a location"
                 mode="bar"
-                icon="heart"
-                onIconPress={() => {
-
-                }}
+                icon={
+                    isFavouritesToggled ? "heart" : "heart-outline"
+                }
+                onIconPress={onFavouritesToggle}
                 value={searchKeyword}
                 onChangeText={(text) => {
                     setSearchKeyword(text)

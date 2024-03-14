@@ -6,9 +6,11 @@ import { TouchableOpacity} from 'react-native';
 //components 
 import { RestaurantsInfoCard } from '../components/restaurant-info-card.component';
 import { SafeArea } from '../../../../src/components/utility/safe-area.component';
+import { FavouritesBar } from '../../../components/favourite/favourites-bar.component'; 
 
 //context 
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context';
+import { FavouritesContext } from '../../../services/favourites/favourites.context';
 import { Search } from '../components/search.component';
 
  
@@ -31,6 +33,8 @@ const Loading = styled(ActivityIndicator)`
 export const RestaurantsScreen = ({ navigation }) => {
 
     const { isLoading, error, restaurants } = useContext(RestaurantsContext); 
+
+    const { favourites } = useContext(FavouritesContext); 
     const [isToggled, setIsToggled] = useState(false); 
 
     return(
@@ -38,8 +42,13 @@ export const RestaurantsScreen = ({ navigation }) => {
 
             <Search 
                 isFavouritesToggled={isToggled} 
-                onFavouritesToggled={() => setIsToggled(!isToggled)} 
+                onFavouritesToggle={() => setIsToggled(!isToggled)} 
             />
+
+            {
+                isToggled && 
+                <FavouritesBar favourites={favourites} />
+            }
 
             {
                 (isLoading) && (
